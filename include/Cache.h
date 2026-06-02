@@ -9,6 +9,7 @@
 struct CacheLine {
     int tag;
     bool valid;
+    int lastUsed;
 };
 
 class Cache {

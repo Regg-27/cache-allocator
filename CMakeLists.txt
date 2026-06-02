@@ -5,4 +5,6 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(cache_allocator main.cpp
         src/Cache.cpp
-        include/cache.h)
+        include/cache.h
+        include/SetAssociativeCache.h
+        src/SetAssociativeCache.cpp)
