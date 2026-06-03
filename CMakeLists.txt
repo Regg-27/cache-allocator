@@ -7,4 +7,6 @@ add_executable(cache_allocator main.cpp
         src/Cache.cpp
         include/cache.h
         include/SetAssociativeCache.h
-        src/SetAssociativeCache.cpp)
+        src/SetAssociativeCache.cpp
+        src/Benchmark.cpp
+        include/Benchmark.h)
