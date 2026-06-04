@@ -1,4 +1,6 @@
 #include <iostream>
+
+#include "include/Allocator.h"
 #include "include/Cache.h"
 #include "include/SetAssociativeCache.h"
 #include "include/Benchmark.h"
@@ -35,8 +37,18 @@ int main() {
     // std::cout << "Hits: " << lruCache.getHits() << std::endl;
     // std::cout << "Misses: " << lruCache.getMisses() << std::endl;
 
-    benchmarkHitRate();
-    benchmarkLatency();
+    //benchmark test
+    // benchmarkHitRate();
+    // benchmarkLatency();
+
+    //allocator test
+    // Allocator allocator(64, 4);
+    // std::cout << allocator.getFreeListSize() << std::endl;
+    // void* pointer = allocator.allocate();
+    // std::cout << allocator.getFreeListSize() << std::endl;
+    // allocator.deallocate(pointer);
+    // std::cout << allocator.getFreeListSize() << std::endl;
+
 
     return 0;
 }

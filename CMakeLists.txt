@@ -9,4 +9,6 @@ add_executable(cache_allocator main.cpp
         include/SetAssociativeCache.h
         src/SetAssociativeCache.cpp
         src/Benchmark.cpp
-        include/Benchmark.h)
+        include/Benchmark.h
+        include/Allocator.h
+        src/Allocator.cpp)

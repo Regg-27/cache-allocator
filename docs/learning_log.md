@@ -4,7 +4,8 @@
 Day 1: project setup, C++ orientation, direct-mapped cache implementation
 Day 2: set-associative cache with FIFO and LRU eviction policies
 Day 3: benchmarks, latency comparison, and Python visualization
-Day 4: 
+Day 4: memory allocator with fixed-size blocks and free list
+Day 5:
 
 ---
 
@@ -87,33 +88,31 @@ by forcing constant eviction across 64 ways.
 
 ## Day 4
 ### What I built
-
+Built a fixed-size block memory allocator in C++. The allocator manages a raw
+buffer of bytes divided into equal-sized blocks. Implemented a free list using
+a vector of void* pointers to track available blocks. allocate() pops a block
+off the free list and returns it to the caller. deallocate() pushes the block
+back onto the free list. Added a null pointer guard to prevent silent corruption
+on bad input. Verified correctness by checking free list size before, during,
+and after allocation.
 
 ### What confused me
-
+void* was initially confusing because Java never exposes raw pointers. In Java,
+Object and generics (T) exist, but the JVM always knows
+the underlying type. void* in C++ is a raw memory address with no type attached
+at all — the caller decides what it points to. 
 
 ### How I resolved it
-
+Connected C++ concepts back to Java equivalents — void* maps loosely to Object
+or T but at the memory level rather than the type level. 
 
 ### Performance notes
+N/A — no formal benchmarking yet. Correctness verified manually via free list
+size tracking. Allocator benchmarking and fragmentation analysis added in Day 5.
 
 ---
 
 ## Day 5
-### What I built
-
-
-### What confused me
-
-
-### How I resolved it
-
-
-### Performance notes
-
----
-
-## Day 6
 ### What I built
 
 
