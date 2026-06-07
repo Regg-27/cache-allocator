@@ -7,5 +7,6 @@
 
 void benchmarkHitRate();
 void benchmarkLatency();
+void benchmarkAllocator();
 
 #endif

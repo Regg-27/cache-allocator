@@ -5,7 +5,7 @@ Day 1: project setup, C++ orientation, direct-mapped cache implementation
 Day 2: set-associative cache with FIFO and LRU eviction policies
 Day 3: benchmarks, latency comparison, and Python visualization
 Day 4: memory allocator with fixed-size blocks and free list
-Day 5:
+Day 5: utilization tracking, allocator benchmarks, and visualization
 
 ---
 
@@ -114,12 +114,23 @@ size tracking. Allocator benchmarking and fragmentation analysis added in Day 5.
 
 ## Day 5
 ### What I built
-
+Added utilization tracking to the memory allocator with getAllocatedCount() and
+getUtilization() methods. Built a benchmarkAllocator() function measuring
+allocation and deallocation speed across 1024 blocks of 64 bytes each. Added
+a third chart to visualize.py showing allocator performance. Results show
+allocation averages 25ns per operation and deallocation averages 20ns —
+deallocation is faster because push_back is one fewer operation than back()
+plus pop_back().
 
 ### What confused me
-
+Initially used freeList.size() to terminate my for loop, causing a bug as the termination condition shrunk as the loop went on.
+I also forgot that pop_back does not return an element. You first must use back to get the element, then pop_back to remove it as the loop continues on.
 
 ### How I resolved it
-
+Caught the loop bug by tracing through the logic and recognizing the termination condition was shrinking. Fixed the pop_back issue by checking C++ vector documentation and using back() to retrieve before pop_back() to remove.
 
 ### Performance notes
+Allocator benchmark (1024 blocks, 64 bytes each):
+- Allocation: 26,125ns total, ~25ns per operation
+- Deallocation: 20,875ns total, ~20ns per operation
+- Deallocation is ~20% faster than allocation due to simpler free list operation

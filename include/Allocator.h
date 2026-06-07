@@ -17,6 +17,8 @@ public:
     void* allocate();
     void deallocate(void* block);
     int getFreeListSize();
+    int getAllocatedCount();
+    double getUtilization();
 };
 
 

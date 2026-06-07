@@ -26,3 +26,13 @@ plt.title("Average Access Latency")
 plt.xlabel("Cache Type")
 plt.ylabel("Nanoseconds")
 plt.savefig("latency.png")
+
+alloc_ops = ["Allocate", "Deallocate"]
+alloc_latency = [25, 20]
+
+plt.figure()
+plt.bar(alloc_ops, alloc_latency, color=["blue", "orange"])
+plt.title("Allocator Performance")
+plt.xlabel("Operation")
+plt.ylabel("Avg Nanoseconds per Operation")
+plt.savefig("allocator_perf.png")

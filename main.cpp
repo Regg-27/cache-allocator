@@ -50,5 +50,25 @@ int main() {
     // std::cout << allocator.getFreeListSize() << std::endl;
 
 
+    //getUtil test
+    // Allocator allocator(64, 4);
+    // void* x = allocator.allocate();
+    // std::cout << allocator.getUtilization() << std::endl;
+    // void* y = allocator.allocate();
+    // std::cout << allocator.getUtilization() << std::endl;
+    // void* z = allocator.allocate();
+    // std::cout << allocator.getUtilization() << std::endl;
+    // void* w = allocator.allocate();
+    // std::cout << allocator.getUtilization() << std::endl;
+
+
+    //allocatorBenchmark test
+    // benchmarkAllocator();
+
+
+
+
+
+
     return 0;
 }

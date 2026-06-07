@@ -5,6 +5,8 @@
 #include "../include/Cache.h"
 #include "../include/SetAssociativeCache.h"
 #include "../include/Benchmark.h"
+#include "../include/Allocator.h"
+
 #include <chrono>
 #include <iostream>
 
@@ -67,6 +69,31 @@ void benchmarkLatency() {
     std::cout << "\n=== LRU Cache Duration ===" << std::endl;
     std::cout << lruCDuration << " ns" << std::endl;
     std::cout << "Avg per access: " << lruCDuration / 100000 << " ns" << std::endl;
+}
+
+void benchmarkAllocator() {
+    Allocator allocator(64, 1024);
+    std::vector<void*> pointers;
+    auto allocStart = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1024; i++) {
+        pointers.push_back(allocator.allocate());
+    }
+    auto allocEnd = std::chrono::high_resolution_clock::now();
+    auto allocDuration = std::chrono::duration_cast<std::chrono::nanoseconds>(allocEnd - allocStart).count();
+    std::cout << "\n=== Allocation Duration ===" << std::endl;
+    std::cout << allocDuration << " ns" << std::endl;
+    std::cout << "Avg per access: " << allocDuration / 1024 << " ns" << std::endl;
+
+    auto deallocStart = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1024; i++) {
+        allocator.deallocate(pointers.back());
+        pointers.pop_back();
+    }
+    auto deallocEnd = std::chrono::high_resolution_clock::now();
+    auto deallocDuration = std::chrono::duration_cast<std::chrono::nanoseconds>(deallocEnd - deallocStart).count();
+    std::cout << "\n=== Deallocation Duration ===" << std::endl;
+    std::cout << deallocDuration << " ns" << std::endl;
+    std::cout << "Avg per access: " << deallocDuration / 1024 << " ns" << std::endl;
 }
 
 

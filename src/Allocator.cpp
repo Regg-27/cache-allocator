@@ -33,3 +33,11 @@ void Allocator::deallocate(void* block) {
 int Allocator::getFreeListSize() {
     return freeList.size();
 }
+
+int Allocator::getAllocatedCount() {
+    return numBlocks - freeList.size();
+}
+
+double Allocator::getUtilization() {
+    return ((double)getAllocatedCount()/numBlocks) * 100;
+}
