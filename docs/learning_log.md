@@ -6,6 +6,7 @@ Day 2: set-associative cache with FIFO and LRU eviction policies
 Day 3: benchmarks, latency comparison, and Python visualization
 Day 4: memory allocator with fixed-size blocks and free list
 Day 5: utilization tracking, allocator benchmarks, and visualization
+Day 6: complete README with benchmarks, architecture, and reflections
 
 ---
 
